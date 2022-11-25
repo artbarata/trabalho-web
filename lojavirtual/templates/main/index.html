@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block conteudo %}
+
+
+<div class="banner-image w-100 vh-100 d-flex justify-content-center align-items-center">
+    <div class="content text-center py-5">
+        {% if user.is_anonymous %}
+        <h3 class="d-flex justify-content-center">Não conectado {{ user.get_name }}</h3>
+        <a class="d-flex justify-content-center" href="{% url 'login' %}">Login</a>
+        {% else %}
+        <div class="d-flex flex-row">
+            <div class="image col-4 d-flex justify-content-center">
+                <img class="" src="static/img/user.png">
+            </div>
+            <div class="col-8">
+                <h3 class="d-flex justify-content-center">Bem vindo(a): </h3>
+                <h2 class="d-flex justify-content-center"> {{ user.username }} </h2>
+                <a class="d-flex justify-content-center" href="{% url 'logout' %}">Logout</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock conteudo %}
+
+
+
+
+

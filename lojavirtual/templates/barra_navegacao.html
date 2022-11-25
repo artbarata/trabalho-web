@@ -1,0 +1,62 @@
+<header class="header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light py-1 fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Cloth's</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/sobre">Sobre nós</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contato">Contato</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/produtos">Produtos</a>
+                    </li>
+                    <li class="nav-item">
+                        <i class="fa-solid fa-search"></i>
+                        <i class="fa-solid fa-shopping-bag"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        {% if not user.is_anonymous %}
+        <ul class="list-adm d-flex">
+            <li class="list-adm-li">
+                <a href="/admin/auth/user/">Usuários</a>
+            </li>
+
+            <li class="list-adm-li"><a href="/admin/produtos/produto/">Produtos</a></li>
+
+            <li class="list-adm-li"><a href="/admin/produtos/categoria/">Categoria</a></li>
+
+            <li class="list-adm-li"><a href="/admin/pedidos/pedido/">Pedidos</a></li>
+
+            <li class="list-adm-li">{% with quantidade_itens=carrinho|length %}
+                {% if quantidade_itens > 0 %}
+                Seu carrinho de compras:
+                <a href="{% url 'carrinho:detalhes_carrinho' %}">{{ quantidade_itens }}
+                    produto{{ quantidade_itens|pluralize }} - R${{ carrinho.get_total_geral }}</a>
+                {% else %}
+                Seu carrinho está vazio.
+                {% endif %}
+                {% endwith %}
+            </li>
+        </ul>
+
+
+        {% endif %}
+    </nav>
+
+
+</header>

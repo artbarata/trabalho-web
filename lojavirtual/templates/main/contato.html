@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block conteudo %}
+
+<div class="banner-image w-100 vh-100 d-flex justify-content-center align-items-center">
+    <div class="content text-center py-5">
+        <h2>Contact Us</h2>
+        <p>Arthur Barata Soares - Web Developer</p>
+        <p>Gabriel Dias Ferreira Pinto - Web Design</p>
+        <P>Leticia Ester Moreira da Silva - Idealizadora de marketing</P>
+        <P>Yasmin Luana Gregório Rodrigues - Product Manager</P>
+
+        <p> Tel: (+55) 31 99617-6653</p>
+        <p> Endereço: R. Álvares Maciel, 628 - Santa Efigênia, Belo Horizonte - MG, 30150-250</p>
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li> {{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <div class="form-contato">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="button" type="submit">Enviar Mensagem</button>
+            </form>
+
+        </div>
+
+    </div>
+</div>
+{% endif %}
+{% endblock conteudo %}

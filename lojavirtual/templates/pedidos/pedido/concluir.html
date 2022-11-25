@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<div class="conclui d-flex flex-column justify-content-center">
+<h1>Obrigado pela compra!</h1>
+<p>Seu pedido foi concluído com sucesso.
+    O número do seu pedido é: <strong>#{{ pedido.id }}</strong>
+</p>
+<p><a href="{% url 'produtos:listar_produtos' %}">Retornar à loja</a></p>
+
+</div>
+
+{% endblock conteudo %}
+

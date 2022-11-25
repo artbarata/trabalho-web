@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<div class="categorias d-flex flex-row justify-content-center">
+    <h3><a href="/produtos">Todas as categorias</a></h3>
+    {% for categoria in lista_categorias %}
+    <h3><a href="{{ categoria.get_absolute_url }}">{{ categoria.nome }}</a></h3>
+    {% endfor %}
+</div>
+
+
+<!-- Home (como se fosse um anúncio)-->
+<section id="home">
+    <div class="container">
+            <h5>Novidades!</h5>
+            <h1><span>Black Friday</span> 2022</h1>
+            <p>
+                Somente hoje, na Cloth's você encontra <br>
+                os melhores preços para te deixarem na moda
+            </p>
+        </div>
+</section>
+
+<!-- Types (abas onde vai te redirecionar para x lugares que vendem produtos especificos no site (((que nao existem))))-->
+<section id="types" class="w-100">
+    <div class="row p-0 m-0">
+        <div class="one col-lg-4 col-md-12 col-12 p-0">
+            <img class="img-fluid" src="static/img/footwear.jpg" alt="">
+
+        </div>
+        <div class="one col-lg-4 col-md-12 col-12 p-0">
+            <img class="img-fluid" src="static/img/clothing.jpg" alt="">
+
+        </div>
+        <div class="one col-lg-4 col-md-12 col-12 p-0">
+            <img class="img-fluid" src="static/img/purses.jpg" alt="">
+
+        </div>
+    </div>
+</section>
+
+<!-- Featured products, que serao os produtos de amostra para a aplicação django-->
+<section class="section-buscar">
+    <div class="d-flex align-items-center">
+        <div class="container">
+            <h1 class="d-flex justify-content-center">Catálogo</h1>
+            <div class="container-frutas row col-md-12 col-12 col-lg-12">
+                {% for produto in lista_produtos %}
+                <div class="container">
+                    <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}">
+                    <p><a href="{{ produto.get_absolute_url }}">{{ produto.nome }}</a></p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock conteudo %}
